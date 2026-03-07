@@ -626,25 +626,97 @@ a {
     color: var(--slate-light);
 }
 
-/* ===== SPECIALIZATIONS ===== */
+/* ===== CLINICAL EXPERTISE (SPECIALIZATIONS & SKILLS) ===== */
 .specializations {
     background: var(--grey-light);
 }
 
-.spec-grid {
+.expertise-layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.expertise-sidebar {
+    position: sticky;
+    top: 100px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.expertise-image {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.skills-box {
+    background: var(--white);
+    padding: 20px 24px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.skills-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--slate-dark);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--pink-glow);
+    padding-bottom: 8px;
+}
+
+.skills-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.skills-list li {
+    font-size: 0.9rem;
+    color: var(--slate);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skills-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--pink);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.spec-grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+    height: 100%;
 }
 
 .spec-card {
     background: var(--white);
-    padding: 36px 28px;
+    padding: 32px 24px;
     border-radius: var(--radius-md);
     transition: var(--transition);
     border: 1px solid transparent;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .spec-card::before {
@@ -670,14 +742,14 @@ a {
 }
 
 .spec-icon {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: var(--pink-glow);
     border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     color: var(--pink);
     transition: var(--transition);
 }
@@ -689,60 +761,46 @@ a {
 
 .spec-card h3 {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 600;
     color: var(--slate-dark);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .spec-card p {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--slate-light);
     line-height: 1.6;
 }
 
-/* ===== SKILLS ===== */
-.skills {
-    background: var(--white);
+@media (max-width: 900px) {
+    .expertise-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .expertise-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        align-items: start;
+        margin-bottom: 32px;
+    }
+
+    .expertise-image {
+        margin-bottom: 0;
+        height: 100%;
+    }
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    max-width: 900px;
-    margin: 0 auto;
-}
+@media (max-width: 600px) {
+    .expertise-sidebar {
+        grid-template-columns: 1fr;
+    }
 
-.skill-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 24px;
-    background: var(--grey-light);
-    border-radius: var(--radius-sm);
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--slate-dark);
-    transition: var(--transition);
-}
-
-.skill-item:hover {
-    background: var(--pink-glow);
-    transform: translateX(4px);
-    color: var(--pink-dark);
-}
-
-.skill-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--pink);
-    flex-shrink: 0;
-}
-
-.skill-item:hover .skill-dot {
-    box-shadow: 0 0 8px rgba(215, 100, 147, 0.5);
+    .spec-grid-2col {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ===== RESEARCH ===== */
