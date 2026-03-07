@@ -84,7 +84,7 @@ if (heroStats) {
 }
 
 // ===== STAGGERED ANIMATIONS =====
-document.querySelectorAll('.spec-grid-2col, .languages-grid, .centres-list, .testimonials-grid, .consultation-grid').forEach(grid => {
+document.querySelectorAll('.spec-grid, .languages-grid, .centres-list, .testimonials-grid, .consultation-grid').forEach(grid => {
     const gridObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
