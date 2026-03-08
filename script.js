@@ -25,28 +25,6 @@ navLinks.querySelectorAll('a').forEach(link => {
     });
 });
 
-// ===== STAT COUNTER ANIMATION =====
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-count'));
-        const duration = 1500;
-        const start = performance.now();
-
-        function update(currentTime) {
-            const elapsed = currentTime - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-            counter.textContent = Math.round(eased * target);
-
-            if (progress < 1) {
-                requestAnimationFrame(update);
-            }
-        }
-        requestAnimationFrame(update);
-    });
-}
-
 // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
 const observerOptions = {
     threshold: 0.15,
@@ -67,21 +45,6 @@ document.querySelectorAll('.spec-card, .skill-item, .research-card, .award-card,
     el.classList.add('fade-in');
     fadeObserver.observe(el);
 });
-
-// Counter animation on hero visibility
-const heroObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-            heroObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.3 });
-
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) {
-    heroObserver.observe(heroStats);
-}
 
 // ===== STAGGERED ANIMATIONS =====
 document.querySelectorAll('.spec-grid, .languages-grid, .centres-list, .testimonials-grid, .consultation-grid').forEach(grid => {
